@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>NextBus</title>
+    <link rel="stylesheet" href="bootstrap.css">
+    <link rel="stylesheet" href="style.css">
+    <script>
+        function showpage(pagename){
+            pages = document.getElementsByClassName('page');
+            console.log(pages);
+            for (x of pages)
+                x.style.display = "none";
+            document.getElementById(pagename).style.display = "block";
+        }
+    </script>
+</head>
+<body onload="showpage('introduction');">
+    <div class="maindiv">
+        <div id="bussearch" class="col-md-6 col-sm-12">
+            <center class="container">
+                find your
+                <h1>NEXT BUS</h1>
+                <form action="" class="col-sm-12 row">
+                    <div class="col-sm-12 col-md-6 form-group">
+                        FROM
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="State" list="states">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="District" list="districts">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Town" list="towns">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Stop" list="stops">
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-6 form-group">
+                        TO
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="State" list="states">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="District" list="districts">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Town" list="towns">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Stop" list="stops">
+                        </div>
+                    </div>
+                    <div class="form-group col-sm-12">
+                        <select  class="form-control" style="text-align-last : center;">
+                            <option value="Any bus" selected>Any bus</option>
+                            <option value="LS">LS</option>
+                            <option value="FP">FP</option>
+                            <option value="SUPERFAST">SUPERFAST</option>
+                            <option value="INTERSTATE">INTERSTATE</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-sm-12">
+                        <input type="datetime-local" class="form-control">
+                    </div>
+                    <div class="form-group col-sm-12"><input class="form-control" type="button" value="GO" onclick="showpage('searchres')"></div>
+                </form>
+            </center>
+        </div>
+        <div id="introduction" class="page col-md-6 col-sm-12" style="display:none;">
+            <center class="container">
+                <h3>Find Your Next Bus</h3>
+                <p>
+                Next Bus is a support platform where individuals come together to find and to share information about bus schedules
+                and previous experiences, bringing to you all information you would require to make a decision of your very Next Bus.
+                </p>
+                <p>
+                If you think there is information you could provide to the plenty other Bus riders, feel free to sign up as a Contributor.
+                Support Bus riders across your place by providing updates whenever you'd like to.
+                </p>
+                <p>
+                If you yourself are involved in Bus services or are part of a private Bus Company, sign up as Transport Users and we'll help
+                you reach more customers
+                </p>
+                <div class="col-sm-6 left introactions"><div onclick="showpage('signin');">Sign In</div></div>
+                <div class="col-sm-6 left introactions"><div onclick="showpage('signup');">Sign Up</div></div>
+            </center>
+        </div>
+        <div id="searchres" class="page col-md-6 col-sm-12" style="display:none;">
+            <center class="container">
+                <div class="col-sm-12 col-md-8 result">result</div>
+                <div class="col-sm-12 col-md-8 result">result2</div>
+                <div class="col-sm-12 col-md-8 result">result3</div>
+                <div class="col-sm-12 col-md-8 result">result4</div>
+                <div class="col-sm-12 col-md-8 result">result1</div>
+                <div class="col-sm-12 col-md-8 result">result2</div>
+                <div class="col-sm-12 col-md-8 result">result3</div>
+                <div class="col-sm-12 col-md-8 result">result4</div>
+                <div class="col-sm-12 col-md-8 result">result5</div>
+                <div class="col-sm-12 col-md-8 result">result6</div>
+                <div class="col-sm-12 col-md-8 result">result7</div>
+                <div class="col-sm-12 col-md-8 result">result8</div>
+                <div class="col-sm-12 col-md-8 result">result9</div>
+                <div class="col-sm-12 col-md-8 result">result10</div>
+            </center>
+        </div>
+        <div id="signin" class="page col-md-6 col-sm-12" style="display:block">
+            <center class="container">
+                <form action="" class="form-group container">
+                    <h3>Sign In</h3>
+                    <div class="form-group col-sm-12 col-md-8"><input class="form-control" type="text" placeholder="username" ></div>
+                    <div class="form-group col-sm-12 col-md-8"><input class="form-control" type="password" placeholder="password" ></div>
+                    <div class="form-group col-sm-12 col-md-8"><input class="form-control" type="submit" value="Sign In" ></div>
+                    <p>Not a member ? <a href="#" onclick="showpage('signup');">Sign Up</a> Here</p>
+                </form>
+            </center>
+        </div>
+        <div id="signup" class="page col-md-6 col-sm-12" style="display:block">
+            <center class="container">
+                <form action="" class="form-group container">
+                    <h3>Sign Up</h3>
+                    <div class="form-group col-sm-12 col-md-8"><input class="form-control" type="text" placeholder="select a username" ></div>
+                    <div class="form-group col-sm-12 col-md-8"><input class="form-control" type="password" placeholder="password" ></div>
+                    <div class="form-group col-sm-12 col-md-8"><input class="form-control" type="password" placeholder="Confirm password" ></div>
+                    <div class="form-group col-sm-12 col-md-8"><input class="form-control" type="submit" value="Sign Up" ></div>
+                    <p>Already a member ? <a href="#" onclick="showpage('signin');">Sign In</a> Here</p>
+                </form>
+            </center>
+        </div>
+    </div>
+    <datalist id="states">
+        <option value="kerala">kerala</option>
+    </datalist>
+    <datalist id="districts">
+        <option value="Kottayam">Kottayam</option>
+    </datalist>
+    <datalist id="towns">
+        <option value="TOWN">TOWN</option>
+    </datalist>
+    <datalist id="stops">
+        <option value="STOP">STOP</option>
+    </datalist>
+</body>
+</html>
