@@ -6,22 +6,28 @@
     <link rel="stylesheet" href="bootstrap.css">
     <link rel="stylesheet" href="style.css">
     <script>
-        function showpage(pagename){
-            pages = document.getElementsByClassName('page');
-            console.log(pages);
-            for (x of pages)
+        function showrightpage(pagename, classname='pageright'){
+            pages = document.getElementsByClassName(classname);
+            console.log('pages : ');
+            for (x of pages){
+                console.log(x);
                 x.style.display = "none";
+            }
+            console.log('Showing '+pagename);
             document.getElementById(pagename).style.display = "block";
+        }
+        function showleftpage(pagename){
+            showrightpage(pagename, 'pageleft');
         }
     </script>
 </head>
-<body onload="showpage('introduction');">
+<body onload="showleftpage('bussearch');showrightpage('introduction');">
     <div class="maindiv">
-        <div id="bussearch" class="col-md-6 col-sm-12">
+        <div id="bussearch" class="page pageleft col-md-6 col-sm-12">
             <center class="container">
                 find your
                 <h1>NEXT BUS</h1>
-                <form action="" class="col-sm-12 row">
+                <form class="col-sm-12 row">
                     <div class="col-sm-12 col-md-6 form-group">
                         FROM
                         <div class="form-group">
@@ -53,7 +59,7 @@
                         </div>
                     </div>
                     <div class="form-group col-sm-12">
-                        <select  class="form-control" style="text-align-last : center;">
+                        <select  class="form-control">
                             <option value="Any bus" selected>Any bus</option>
                             <option value="LS">LS</option>
                             <option value="FP">FP</option>
@@ -64,11 +70,91 @@
                     <div class="form-group col-sm-12">
                         <input type="datetime-local" class="form-control">
                     </div>
-                    <div class="form-group col-sm-12"><input class="form-control" type="button" value="GO" onclick="showpage('searchres')"></div>
+                    <div class="form-group col-sm-12">
+                        <input class="form-control" type="button" value="GO" onclick="showrightpage('searchres');">
+                    </div>
                 </form>
             </center>
         </div>
-        <div id="introduction" class="page col-md-6 col-sm-12" style="display:none;">
+        <div id="newbus" class="page pageleft col-md-6 col-sm-12">
+            <center class="container">
+                add a
+                <h1>New Bus</h1>
+                <form class="col-sm-12 row">
+                    <div class="col-sm-12 form-group">
+                        <input type="text" class="form-control" placeholder="Bus Name">
+                    </div>
+                    <div class="col-sm-12 form-group">
+                        <input type="text" class="form-control" placeholder="Number Plate">
+                    </div>
+                    <div class="col-sm-12 form-group">
+                        <input type="text" class="form-control" placeholder="Bus Type">
+                    </div>
+                    <div class="col-sm-12 form-group">
+                        <input type="button" class="form-control" value="ADD BUS" onclick="showleftpage('bussearch');">
+                    </div>
+                </form>
+            </center>
+        </div>
+        <div id="newstop" class="page pageleft col-md-6 col-sm-12">
+            <center class="container">
+                add a
+                <h1>New Stop</h1>
+                <form class="col-sm-12 row">
+                    <div class="col-sm-12 form-group">
+                        <input type="text" class="form-control" placeholder="Stop Name">
+                    </div>
+                    <div class="col-sm-12 form-group">
+                        <input type="text" class="form-control" placeholder="Location Code">
+                    </div>
+                    <div class="col-sm-12 form-group">
+                        <input type="text" class="form-control" placeholder="Lattitude">
+                    </div>
+                    <div class="col-sm-12 form-group">
+                        <input type="text" class="form-control" placeholder="Longitude">
+                    </div>
+                    <div class="col-sm-12 form-group">
+                        <input type="button" class="form-control" value="ADD STOP" onclick="showleftpage('bussearch');">
+                    </div>
+                </form>
+            </center>
+        </div>
+        <div id="newbustime" class="page pageleft col-md-6 col-sm-12">
+            <center class="container">
+                add a
+                <h1>New Bus Time</h1>
+                <form class="col-sm-12 row">
+                    <div class="col-sm-12 form-group">
+                        arrival time
+                        <input type="time" class="form-control" placeholder="Arrival">
+                    </div>
+                    <div class="col-sm-12 form-group">
+                        departure time
+                        <input type="time" class="form-control" placeholder="Departure">
+                    </div>
+                    <div class="col-sm-12 form-group">
+                        <select name="" id="" class='form-control'>
+                            <option>atop1</option>
+                            <option>btop1</option>
+                            <option>ctop1</option>
+                            <option>dtop1</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-12 form-group">
+                        <select name="" id="" class="form-control">
+                            <option value="">bus1</option>
+                            <option value="">bus2</option>
+                            <option value="">bus3</option>
+                            <option value="">bus4</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-12 form-group">
+                        <input type="button" class="form-control" value="ADD STOP" onclick="showleftpage('bussearch');">
+                    </div>
+                </form>
+            </center>
+        </div>
+        <div id="introduction" class="page pageright col-md-6 col-sm-12" style="display:none;">
             <center class="container">
                 <h3>Find Your Next Bus</h3>
                 <p>
@@ -83,12 +169,12 @@
                 If you yourself are involved in Bus services or are part of a private Bus Company, sign up as Transport Users and we'll help
                 you reach more customers
                 </p>
-                <div class="col-sm-6 left introactions"><div onclick="showpage('signin');">Sign In</div></div>
-                <div class="col-sm-6 left introactions"><div onclick="showpage('signup');">Sign Up</div></div>
+                <div class="col-sm-6 left introactions"><div onclick="showrightpage('signin');">Sign In</div></div>
+                <div class="col-sm-6 left introactions"><div onclick="showrightpage('signup');">Sign Up</div></div>
             </center>
         </div>
-        <div id="searchres" class="page col-md-6 col-sm-12" style="display:none;">
-            <center class="container">
+        <div id="searchres" class="page pageright col-md-6 col-sm-12" style="display:none;">
+            <center class="container donttransform">
                 <div class="col-sm-12 col-md-8 result">result</div>
                 <div class="col-sm-12 col-md-8 result">result2</div>
                 <div class="col-sm-12 col-md-8 result">result3</div>
@@ -105,18 +191,18 @@
                 <div class="col-sm-12 col-md-8 result">result10</div>
             </center>
         </div>
-        <div id="signin" class="page col-md-6 col-sm-12" style="display:block;">
+        <div id="signin" class="page pageright col-md-6 col-sm-12" style="display:block;">
             <center class="container">
-                <form action="" onsubmit="showpage('casualhome')" class="form-group container">
+                <form class="form-group container">
                     <h3>Sign In</h3>
                     <div class="form-group col-sm-12 col-md-8"><input class="form-control" type="text" placeholder="username" ></div>
                     <div class="form-group col-sm-12 col-md-8"><input class="form-control" type="password" placeholder="password" ></div>
-                    <div class="form-group col-sm-12 col-md-8"><input class="form-control" type="submit" value="Sign In" ></div>
-                    <p>Not a member ? <a href="#" onclick="showpage('signup');">Sign Up</a> Here</p>
+                    <div class="form-group col-sm-12 col-md-8"><input class="form-control" type="button" value="Sign In" onclick="showrightpage('casualhome');"></div>
+                    <p>Not a member ? <a href="#" onclick="showrightpage('signup');">Sign Up</a> Here</p>
                 </form>
             </center>
         </div>
-        <div id="signup" class="page col-md-6 col-sm-12" style="display:block;">
+        <div id="signup" class="page pageright col-md-6 col-sm-12" style="display:block;">
             <center class="container">
                 <form action="" class="form-group container">
                     <h3>Sign Up</h3>
@@ -124,12 +210,34 @@
                     <div class="form-group col-sm-12 col-md-8"><input class="form-control" type="password" placeholder="password" ></div>
                     <div class="form-group col-sm-12 col-md-8"><input class="form-control" type="password" placeholder="Confirm password" ></div>
                     <div class="form-group col-sm-12 col-md-8"><input class="form-control" type="submit" value="Sign Up" ></div>
-                    <p>Already a member ? <a href="#" onclick="showpage('signin');">Sign In</a> Here</p>
+                    <p>Already a member ? <a href="#" onclick="showrightpage('signin');">Sign In</a> Here</p>
                 </form>
             </center>
         </div>
-        <div id="casualhome" class="page col-md-6 col-sm-12" style="display:block;">
-            OLAMIGO
+        <div id="casualhome" class="page pageright col-md-6 col-sm-12" style="display:block;">
+            <center class="container dontdonttransform">
+                <div class="col-sm-12 col-md-8 result" onclick="showleftpage('newbus');">
+                    <h4>Found New Bus</h4>
+                    <h4></h4>
+                </div>
+                <div class="col-sm-12 col-md-8 result" onclick="showleftpage('newstop');">
+                    <h4>Found New Stop</h4>
+                    <h4></h4>
+                </div>
+                <div class="col-sm-12 col-md-8 result" onclick="showleftpage('newbustime');">
+                    <h4>Found New Bus Times</h4>
+                    <h4></h4>
+                </div>
+                <hr>
+                <div class="col-sm-12 col-md-8 result">
+                    <h4>See Profile</h4>
+                    <h4></h4>
+                </div>
+                <div class="col-sm-12 col-md-8 result">
+                    <h4>See My Contributions</h4>
+                    <h4></h4>
+                </div>
+            </center>
         </div>
     </div>
     <datalist id="states">
